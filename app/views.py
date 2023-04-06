@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
+
+
+@csrf_protect
 def login_view(request):
     template = 'landing.html'
     if request.method == 'POST':
