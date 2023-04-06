@@ -11,6 +11,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return redirect('dashboard')
+        else:
+            print('Wrong Credentials')
+            return redirect(template)
     return render(request, template)
 
 def Dashboard(request):
