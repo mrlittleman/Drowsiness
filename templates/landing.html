@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <div class="logo-container">
+                <span class="logo">CARIE</span>
+            </div>
+            <!-- <div class="menu-container">
+                <span class="menu">Login</span> 
+                <span class="menu">Sign In</span> 
+            </div> -->
+        </div>
+        
+        <div class="login-container">
+            <div class="content-container">
+                <img src="{% static 'img/car.png' %}">
+            </div>
+            <div class="form-container">
+                <form method="post" action="{% url 'login' %}" class="form">
+                  {% csrf_token %}
+                  <div class="login-title">
+                    <span class="login">LOGIN</span>
+                  </div>
+                  <div class="form-inputs">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username"><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                    <input type="submit" value="Login">
+                  </div>
+                </form>
+            </div>              
+        </div>
+
+
+    </div>
+</body>
+</html>
