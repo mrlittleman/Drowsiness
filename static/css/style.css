@@ -181,14 +181,26 @@
   background: #1d1b31;
   transition: all 0.5s ease;
   overflow: hidden;
+  cursor: pointer;
 }
 .sidebar.open li.profile{
   width: 250px;
+  cursor: pointer;
+}
+#log_out 
+{
+  cursor: pointer;
 }
 .sidebar li .profile-details{
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
+  cursor: pointer;
+}
+#log-out-link
+{
+  /* background-color: transparent !important; */
+  background: #1d1b31;
 }
 .sidebar li img{
   height: 45px;
@@ -210,6 +222,7 @@
   font-size: 12px;
 }
 .sidebar .profile #log_out{
+  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 0;
@@ -220,12 +233,15 @@
   line-height: 60px;
   border-radius: 0px;
   transition: all 0.5s ease;
-  cursor: pointer;
+
 }
 .sidebar.open .profile #log_out{
   width: 50px;
   background: none;
+  cursor: pointer;
+
 }
+
 .home-section{
   position: relative;
   background: #E4E9F7;
