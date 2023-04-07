@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 
 
-@csrf_protect
 def login_view(request):
     template = 'landing.html'
     if request.method == 'POST':
@@ -20,6 +20,13 @@ def login_view(request):
             return redirect(template)
     return render(request, template)
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+@login_required(login_url='login')
 def Dashboard(request):
     template = 'index.html'
     return render(request, template)
