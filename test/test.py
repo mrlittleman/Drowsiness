@@ -17,7 +17,7 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 # Create a map using Folium
-map = folium.Map(location=[37.7749, -122.4194], zoom_start=12)
+map = folium.Map(location=[14.5995, 120.9842], zoom_start=12)
 
 # Execute the SQL query to select all the rows from the table
 cur.execute("SELECT * FROM drowsiness_tbl")
@@ -31,7 +31,7 @@ for row in rows:
     # Load the pickled data using the pickle module
     pickled_data = row[3] # Assuming the pickled data is in the first column of the table
     deserialized_data = pickle.loads(pickled_data)
-    # print(deserialized_data)
+    print(deserialized_data)
     length_of_deserialized_data = len(deserialized_data)
 
     for num in range(length_of_deserialized_data):
@@ -40,15 +40,12 @@ for row in rows:
         # print(outer_key)
 
         latitude, longitude = deserialized_data[outer_key]['location']
+        drowsiness = deserialized_data[outer_key]['drowsy']
+        time_located = deserialized_data[outer_key]['time']
 
-        # print("this is out lat {} and long {}".format(latitude, longitude))
-    # Extract the latitude and longitude coordinates
-    # longitude, latitude = deserialized_data['Time23:13:41']['location']
-
-    # Add a marker for each location on the map
         geolocator = Nominatim(user_agent="app/1.0")
         location = geolocator.reverse(f"{latitude}, {longitude}")
-        tooltip = f"Location: {location.address}"
+        tooltip = f"Location: {location.address}, Date and Time: {time_located}, Drowsy {drowsiness}"
         folium.Marker(location=[latitude, longitude], tooltip=tooltip).add_to(map)
 
 # Add a layer control to the map

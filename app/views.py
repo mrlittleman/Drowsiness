@@ -48,11 +48,12 @@ def Dashboard(request):
 
             outer_key = list(deserialized_data)[num]
             latitude, longitude = deserialized_data[outer_key]['location']
-        
-            # Add a marker for each location on the map
+            drowsiness = deserialized_data[outer_key]['drowsy']
+            time_located = deserialized_data[outer_key]['time']
+
             geolocator = Nominatim(user_agent="app/1.0")
             location = geolocator.reverse(f"{latitude}, {longitude}")
-            tooltip = f"Location: {location.address}"
+            tooltip = f"Location: {location.address}, Date and Time: {time_located}, Drowsy {drowsiness}"
             folium.Marker(location=[latitude, longitude], tooltip=tooltip).add_to(map)
 
     # Add a layer control to the map
