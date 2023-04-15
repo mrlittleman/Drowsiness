@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>CARIE</title>
 </head>
 <body>
@@ -22,26 +23,39 @@
         
         <div class="login-container">
             <div class="content-container">
-                <img src="{% static 'img/car.png' %}">
+              <img src="{% static 'img/car.png' %}">
             </div>
             <div class="form-container">
-                <form method="post" action="{% url 'login' %}" class="form">
-                  {% csrf_token %}
-                  <div class="login-title">
+               
+              <form method="post" action="{% url 'login' %}" class="form">
+                {% csrf_token %}
+                <div class="login-title">
                     <span class="login">LOGIN</span>
-                  </div>
-                  <div class="form-inputs">
-                    <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username"><br>
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="password" name="password"><br><br>
-                    <input type="submit" value="Login">
-                  </div>
-                </form>
+                </div>
+                <div class="alert-messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            {{message}}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <div class="form-inputs">
+                  <label for="username">Username:</label><br>
+                  <input type="text" id="username" name="username"><br>
+                  <label for="password">Password:</label><br>
+                  <input type="password" id="password" name="password"><br><br>
+                  <input type="submit" value="Login">
+                </div>
+              </form>
             </div>              
-        </div>
-
-
+          </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

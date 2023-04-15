@@ -7,6 +7,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -29,13 +30,13 @@
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
+      <!-- <li>
        <a href="#">
          <i class='bx bx-user' ></i>
          <span class="links_name">User</span>
        </a>
        <span class="tooltip">User</span>
-     </li>
+     </li> -->
      <!-- <li>
        <a href="#">
          <i class='bx bx-chat' ></i>
@@ -43,13 +44,13 @@
        </a>
        <span class="tooltip">Messages</span>
      </li> -->
-     <li>
+     <!-- <li>
        <a href="#">
          <i class='bx bx-pie-chart-alt-2' ></i>
          <span class="links_name">Charts</span>
        </a>
        <span class="tooltip">Analytics</span>
-     </li>
+     </li> -->
      <!-- <li>
        <a href="#">
          <i class='bx bx-folder' ></i>
@@ -72,7 +73,7 @@
        <span class="tooltip">Saved</span>
      </li> -->
      <li>
-       <a href="#">
+       <a href="{% url 'admin:auth_user_changelist' %}">
          <i class='bx bx-cog' ></i>
          <span class="links_name">Setting</span>
        </a>
@@ -91,11 +92,26 @@
      </li>
     </ul>
   </div>
-  <section class="home-section">
-      <div class="text">Dashboard</div>
-  </section>
-
+    <section class="home-section">
+        <div class="text">Dashboard</div>
+        <div class="map-section">
+          <div id="map">{{ map|safe }}</div>
+        </div>
+    </section>
+      
   <script src="{% static 'js/script.js' %}"></script>
+  <!-- <script>
+    // Initialize the map
+    var map = L.map('map').setView([37.7749, -122.4194], 12);
+
+    // Add the map tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add the markers from the context variable
+    {{ map | safe }}
+  </script> -->
 
 </body>
 </html>
