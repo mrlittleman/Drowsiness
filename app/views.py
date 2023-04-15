@@ -28,7 +28,7 @@ def Dashboard(request):
     cur = conn.cursor()
 
     # Create a map using Folium
-    map = folium.Map(location=[37.7749, -122.4194], zoom_start=12)
+    map = folium.Map(location=[14.5995, 120.9842], zoom_start=12)
 
     # Execute the SQL query to select all the rows from the table
     cur.execute("SELECT * FROM drowsiness_tbl")
